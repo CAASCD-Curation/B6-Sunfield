@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晒场开屏 · 方案B — 密集文字墙</title>
+<style>
+/* 方案 B（参考：From Clay to Words 密集文字海报）——数据库文字墙轮动一遍，全场变暗，唯有「晒场」发亮 */
+:root{
+  --bg:#6E2C1B; --ink:#B4633C; --ink2:#8F4128; --hi:#F2E3C8; --dim:#471A0E;
+  --font-en:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-cn:"方正兰亭黑","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);cursor:pointer;font-family:var(--font-cn)}
+#wall{position:absolute;inset:-6% -4%;padding:3%;
+  font-size:clamp(15px,1.9vw,25px);line-height:1.42;text-align:justify;color:var(--ink);
+  font-weight:700;letter-spacing:.02em;user-select:none;transition:color 1.5s ease,transform 1.6s cubic-bezier(.25,1,.5,1)}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(calc(-1*var(--pass)))}}
+#wall .a{color:var(--ink2)}
+#wall .en{font-family:var(--font-en);font-weight:400;font-size:.72em;letter-spacing:.06em}
+#wall .cand{color:inherit}
+#wall.dim{color:var(--dim)}
+#wall.dim .a,#wall.dim .en{color:inherit}
+#wall .cand.lit{transition:color 1.5s ease,text-shadow 1.5s ease}
+#wall.dim .cand.lit{color:var(--hi);text-shadow:0 0 22px rgba(242,227,200,.6),0 0 70px rgba(242,227,200,.3)}
+#grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay}
+#hint{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);font-size:10px;
+  letter-spacing:.5em;color:var(--hi);opacity:0;transition:opacity .8s}
+#hint.in{opacity:.85;animation:blink 2.2s infinite}
+@keyframes blink{50%{opacity:.35}}
+body.out{transition:opacity .7s;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="wall"></div>
+<canvas id="grain"></canvas>
+<script>
+const WORDS=['农民的婚礼','格尔尼卡','收干草','晒谷场','晒盐场','打谷场','诗经·豳风·七月','生死场','丰乳肥臀','艳阳天','秦腔','春蚕秋收','静静的顿河','被开垦的处女地','茶馆','骆驼祥子','变形记','简·爱','日瓦戈医生','活着','边城','一个人的村庄','打谷场露天影院','关中忙罢艺术节','乌鸦群飞的麦田','丰收','晒场计划','螺旋形防波堤','晒秋','麦场','场圃','曝晒','翻搅','收拢','谷物','强光','影子'];
+const EN=['SUN FIELD','DRYING GROUND','EXPOSE / CONCEAL','FIELD·OBJECT·PEOPLE','ARCHIVE 130'];
+const wall=document.getElementById('wall');
+let h='';
+for(let i=0;i<460;i++){
+  const r=Math.random();
+  if(i%53===26) h+='<span class="cand">晒场</span>，';
+  else if(r<0.14) h+='<span class="en">'+EN[(Math.random()*EN.length)|0]+' </span>';
+  else if(r<0.42) h+='<span class="a">'+WORDS[(Math.random()*WORDS.length)|0]+'／</span>';
+  else h+=WORDS[(Math.random()*WORDS.length)|0]+'，';
+}
+wall.innerHTML=h+h;
+/* 按内容实际高度滚动完整一遍 */
+const pass=wall.scrollHeight/2;
+wall.style.setProperty('--pass',pass+'px');
+wall.style.animation='drift 10.5s cubic-bezier(.5,.06,.62,.36) forwards';
+/* 终态位置最接近画面中心的那枚「晒场」被点亮 */
+const cands=[...wall.querySelectorAll('.cand')];
+const targetY=pass+innerHeight*0.51;
+let best=null,bd=1e9;
+for(const c of cands){const d=Math.abs(c.offsetTop-targetY);if(d<bd){bd=d;best=c;}}
+if(best) best.classList.add('lit');
+/* 噪点 */
+const cv=document.getElementById('grain'),g=cv.getContext('2d');
+cv.width=innerWidth;cv.height=innerHeight;
+const idat=g.createImageData(cv.width,cv.height);
+for(let i=0;i<idat.data.length;i+=4){const v=Math.random()*255;idat.data[i]=idat.data[i+1]=idat.data[i+2]=v;idat.data[i+3]=22;}
+g.putImageData(idat,0,0);
+function dimAll(){
+  if(wall.classList.contains('dim'))return;
+  wall.style.animation='none';wall.style.transform='translateY('+(-pass)+'px)';
+  wall.classList.add('dim');
+  /* 变暗的同时把发亮的「晒场」缓缓平移居中 */
+  if(best){
+    const r=best.getBoundingClientRect();
+    const dx=innerWidth/2-(r.left+r.width/2);
+    const dy=innerHeight*0.47-(r.top+r.height/2);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      wall.style.transform='translate('+dx+'px,'+(-pass+dy)+'px)';
+    }));
+  }
+  setTimeout(leave,2600);
+}
+wall.addEventListener('animationend',dimAll);
+let leaving=false;
+function leave(){
+  if(leaving)return;
+  leaving=true;
+  document.body.classList.add('out');
+  setTimeout(()=>{location.href='../index.html';},750);
+}
+document.body.addEventListener('click',dimAll);
+</script>
+</body>
+</html>
