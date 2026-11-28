@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>有地自容 SUN FIELD — 悬层探索版 craft18</title>
 <style>
+/* 内嵌隶书子集字体：保证任何设备都显示同一款隶书 */
+@font-face{font-family:"SunLiSu";src:url("assets/fonts/SunLiSu.woff2") format("woff2");font-display:swap}
+
 /* ── 设计令牌：瑞士国际主义 × 水泥地 / 深色版（__THEMENAME__） ── */
 :root{
   --bg:#FFFFFF;
@@ -64,7 +67,7 @@ header>*{pointer-events:auto}
 .brand{display:flex;align-items:center;gap:14px}
 .brand .chip{font-family:var(--font-cn);font-size:13px;letter-spacing:.14em;padding:5px 14px;border:1.5px solid var(--ink);border-radius:999px;background:transparent}
 .brand h1{font-family:var(--font-en);font-weight:700;font-size:30px;letter-spacing:.02em;line-height:1}
-.brand h1.lishu{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:34px;letter-spacing:.08em;transform:translateY(1px)}
+.brand h1.lishu{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:34px;letter-spacing:.08em;transform:translateY(1px)}
 nav{display:flex;align-items:center;gap:10px}
 .pill{font-family:var(--font-cn);font-size:14px;letter-spacing:.12em;padding:6px 18px;border:1.5px solid var(--ink);border-radius:999px;transition:background .2s,color .2s;background:transparent}
 .pill:hover{background:var(--ink);color:#fff}
@@ -225,7 +228,7 @@ body.uicursor #weed{opacity:0}
 .ctkv .v{line-height:1.7}
 
 /* ── 线框罗盘：单线圈 + 半透明层次 + 楔形指针（整体缩小） ── */
-#sheetmenu .kv .k{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-size:18px;letter-spacing:.18em;color:var(--ink)}
+#sheetmenu .kv .k{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:18px;letter-spacing:.18em;color:var(--ink)}
 #compass{position:fixed;right:22px;bottom:20px;z-index:70;width:170px;height:170px;user-select:none}
 /* 顶部楔形标记：指向当前状态 */
 #cpMark{position:absolute;left:50%;top:-1px;transform:translateX(-50%);width:0;height:0;pointer-events:none;z-index:4;
@@ -238,7 +241,7 @@ body.night #cpMid{border-color:rgba(242,227,182,.5);background:rgba(242,227,182,
 #cpMid.dragging #cpRing{transition:none}
 #cpRing{width:100%;height:100%;display:block;overflow:visible;transition:transform .55s var(--ease)}
 .cp-word{cursor:pointer}
-.cp-word .cn{fill:var(--ink);font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-size:16.5px;letter-spacing:.18em;text-anchor:middle}
+.cp-word .cn{fill:var(--ink);font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:16.5px;letter-spacing:.18em;text-anchor:middle}
 .cp-word .en{fill:var(--sub);font-family:var(--font-en);font-size:6.5px;letter-spacing:.3em;text-anchor:middle}
 body.night .cp-word .cn{fill:#F2E3B6}
 body.night .cp-word .en{fill:#B9A88A}
@@ -274,7 +277,7 @@ body.night #cpDial .face{stroke:#F2E3B6}
 #archpop button:hover{background:var(--ink)}
 #archpop button:hover .t,#archpop button:hover .e{color:#fff}
 #archpop button>img{width:40px;height:34px;object-fit:contain}
-#archpop .t{display:block;font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-size:15px;letter-spacing:.12em;color:var(--ink)}
+#archpop .t{display:block;font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:15px;letter-spacing:.12em;color:var(--ink)}
 #archpop .e{display:block;font-family:var(--font-en);font-size:8px;letter-spacing:.26em;color:var(--sub);margin-top:2px}
 
 /* ── 展览现场：全屏展场档案界面 ── */
@@ -284,7 +287,7 @@ body.inexpo #cur{display:none!important}
 #expo.on{display:block;animation:expofade .38s var(--ease)}
 @keyframes expofade{from{opacity:0}to{opacity:1}}
 #expo .expo-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:16px;padding:14px 3.2vw;background:var(--bg);border-bottom:1px solid var(--line)}
-#expo .expo-bar h1{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:24px;letter-spacing:.14em;color:var(--ink)}
+#expo .expo-bar h1{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:24px;letter-spacing:.14em;color:var(--ink)}
 #expo .expo-bar .en{font-family:var(--font-en);font-size:9px;letter-spacing:.34em;color:var(--sub)}
 #expo .expo-bar .sub{margin-left:auto;font-family:var(--font-cn);font-size:11px;letter-spacing:.18em;color:var(--sub)}
 #expoclose{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);background:transparent;transition:.18s}
@@ -296,7 +299,7 @@ body.inexpo #cur{display:none!important}
 .expo-item img{display:block;width:100%;height:auto;border:1px solid var(--line);background:var(--panel);cursor:zoom-in}
 .expo-item .cap{display:flex;align-items:baseline;gap:14px;margin-top:10px;flex-wrap:wrap}
 .expo-item .tag{font-family:var(--font-en);font-size:9px;letter-spacing:.28em;color:#E85A24;white-space:nowrap}
-.expo-item .t{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-size:16px;letter-spacing:.14em;color:var(--ink)}
+.expo-item .t{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:16px;letter-spacing:.14em;color:var(--ink)}
 .expo-item .n{margin-left:auto;font-family:var(--font-cn);font-size:10.5px;letter-spacing:.08em;color:var(--sub)}
 .expo-item .num{font-family:var(--font-en);font-size:9px;letter-spacing:.2em;color:var(--sub);opacity:.7}
 /* 展览现场 · 平面总览：展具汇总图 + 编号热点 */
@@ -305,7 +308,7 @@ body.inexpo #cur{display:none!important}
 .plan-stage>img{display:block;width:100%;height:auto;box-shadow:0 30px 90px rgba(30,18,10,.28)}
 .plan-cap{display:flex;align-items:baseline;gap:14px;max-width:1240px;margin:14px auto 0;flex-wrap:wrap}
 .plan-cap .tag{font-family:var(--font-en);font-size:9px;letter-spacing:.28em;color:#E85A24;white-space:nowrap}
-.plan-cap .t{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-size:16px;letter-spacing:.14em;color:var(--ink)}
+.plan-cap .t{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:16px;letter-spacing:.14em;color:var(--ink)}
 .plan-cap .hint{margin-left:auto;font-family:var(--font-cn);font-size:10.5px;letter-spacing:.12em;color:var(--sub)}
 .hot{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:none;padding:0;cursor:pointer;z-index:2}
 .hot i{position:relative;width:27px;height:27px;border-radius:50%;background:#FFF7EA;border:1.5px solid #E85A24;color:#E85A24;
@@ -334,7 +337,7 @@ body.inexpo #cur{display:none!important}
 body.night .fx-thumbs{background:#2E211A;border-top-color:rgba(242,227,182,.18)}
 .fx-info{padding:32px 30px 26px;display:flex;flex-direction:column;overflow-y:auto}
 .fx-info .no{font-family:var(--font-en);font-size:9px;letter-spacing:.3em;color:#E85A24}
-.fx-info h2{margin:10px 0 4px;font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:26px;letter-spacing:.12em;color:var(--ink)}
+.fx-info h2{margin:10px 0 4px;font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:26px;letter-spacing:.12em;color:var(--ink)}
 .fx-info .deg{font-family:var(--font-en);font-weight:700;font-size:15px;letter-spacing:.1em;color:var(--accent2)}
 .fx-info p{margin:18px 0 0;font-family:var(--font-cn);font-size:13px;line-height:2;color:var(--ink)}
 .fx-info .mline{margin-top:auto;padding-top:22px;font-family:var(--font-cn);font-size:10.5px;letter-spacing:.06em;line-height:1.9;color:var(--sub);border-top:1px solid var(--line)}
@@ -620,7 +623,7 @@ body.dark .sheet{background:rgba(10,6,4,.55)}
 .cord .pull::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:12px;background:var(--ink);opacity:.6;transform:translateX(-50%)}
 .cord .pull:active{cursor:grabbing}
 body.night .cord .pull{background:#2E211A}
-.sheet h2{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:32px;letter-spacing:.1em;margin-bottom:6px}
+.sheet h2{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:32px;letter-spacing:.1em;margin-bottom:6px}
 .sheet .en{font-family:var(--font-en);font-size:10px;letter-spacing:.34em;color:var(--sub);display:block;margin-bottom:26px}
 .sheet p{font-size:15px;line-height:1.9;margin-bottom:14px}
 .sheet .kv{border-bottom:none;padding:5px 0}
@@ -645,7 +648,7 @@ body.pre header,body.pre #compass,body.pre #scroll,body.pre #tagpanel{cursor:non
 #iwall .a{color:#8F4128}
 #iwall .en{font-family:var(--font-en);font-weight:300;font-size:.72em;letter-spacing:.06em}
 /* 候选「晒场」：含蓄高亮——比墙文字略亮的隶书，不抢眼、无下划线 */
-#iwall .cand{font-family:"LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:1.36em;color:#DB9463;cursor:pointer;transition:color .5s ease,text-shadow .5s ease}
+#iwall .cand{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:1.36em;color:#DB9463;cursor:pointer;transition:color .5s ease,text-shadow .5s ease}
 #iwall .cand.en2{font-family:"Arial Rounded MT Bold","Nunito","Quicksand","Varela Round","Helvetica Neue",var(--font-en);font-weight:700;font-size:1.02em;letter-spacing:.12em}
 #iwall .cand.warm{color:#F2E3C8;text-shadow:0 0 18px rgba(242,227,200,.55),0 0 60px rgba(242,227,200,.25)}
 #igrain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.5;mix-blend-mode:overlay}
