@@ -7,6 +7,7 @@
 <style>
 /* 内嵌隶书子集字体：保证任何设备都显示同一款隶书 */
 @font-face{font-family:"SunLiSu";src:url("assets/fonts/SunLiSu.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Alegreya";src:url("assets/fonts/Alegreya.woff2") format("woff2");font-display:swap}
 
 /* ── 设计令牌：瑞士国际主义 × 水泥地 / 深色版（__THEMENAME__） ── */
 :root{
@@ -229,7 +230,7 @@ body.uicursor #weed{opacity:0}
 
 /* ── 线框罗盘：单线圈 + 半透明层次 + 楔形指针（整体缩小） ── */
 #sheetmenu .kv .k{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-size:18px;letter-spacing:.18em;color:var(--ink)}
-#compass{position:fixed;right:22px;bottom:20px;z-index:70;width:170px;height:170px;user-select:none}
+#compass{position:fixed;right:calc(3.2vw - 9px);bottom:20px;z-index:70;width:170px;height:170px;user-select:none}
 /* 顶部楔形标记：指向当前状态 */
 #cpMark{position:absolute;left:50%;top:-1px;transform:translateX(-50%);width:0;height:0;pointer-events:none;z-index:4;
   border-left:5.5px solid transparent;border-right:5.5px solid transparent;border-top:8px solid var(--accent2)}
@@ -265,7 +266,7 @@ body.night #cpDial .hole{stroke:#241A14}
 body.night #clockhand{fill:#D9A05B}
 body.night #cpDial .face{stroke:#F2E3B6}
 /* 农具箱：脱离罗盘，悬浮在罗盘上方最右侧；随状态弹出对应农具 + 常驻【清】 */
-#cpdock{position:fixed;right:22px;bottom:206px;z-index:71;display:flex;flex-direction:row;gap:8px;align-items:center}
+#cpdock{position:fixed;right:3.2vw;bottom:206px;z-index:71;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
 /* 档案入口：左下正圆钮（与右上图标同风格）+ 线框弹出层 */
 #archbtn{position:fixed;left:3.2vw;bottom:16px;z-index:71;width:46px;height:46px;border:1.5px solid var(--ink);border-radius:50%;
   display:flex;align-items:center;justify-content:center;background:transparent;transition:transform .18s var(--ease),background .18s;padding:0}
@@ -649,7 +650,7 @@ body.pre header,body.pre #compass,body.pre #scroll,body.pre #tagpanel{cursor:non
 #iwall .en{font-family:var(--font-en);font-weight:300;font-size:.72em;letter-spacing:.06em}
 /* 候选「晒场」：含蓄高亮——比墙文字略亮的隶书，不抢眼、无下划线 */
 #iwall .cand{font-family:"SunLiSu","LiSu","STLiti","隶书","FZLiShu",serif;font-weight:400;font-size:1.36em;color:#DB9463;cursor:pointer;transition:color .5s ease,text-shadow .5s ease}
-#iwall .cand.en2{font-family:"Arial Rounded MT Bold","Nunito","Quicksand","Varela Round","Helvetica Neue",var(--font-en);font-weight:700;font-size:1.02em;letter-spacing:.12em}
+#iwall .cand.en2{font-family:"Alegreya",Georgia,serif;font-weight:700;font-size:1.02em;letter-spacing:.12em}
 #iwall .cand.warm{color:#F2E3C8;text-shadow:0 0 18px rgba(242,227,200,.55),0 0 60px rgba(242,227,200,.25)}
 #igrain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.5;mix-blend-mode:overlay}
 #ihint{position:fixed;left:50%;bottom:9vh;transform:translateX(-50%);z-index:3;font-family:var(--font-cn);font-size:13px;letter-spacing:.28em;color:#F2E3C8;opacity:0;transition:opacity 1.2s ease;pointer-events:none;white-space:nowrap}
